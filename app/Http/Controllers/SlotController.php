@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\SlotService;
+use App\Http\Services\SlotService;
 
 class SlotController extends Controller
 {

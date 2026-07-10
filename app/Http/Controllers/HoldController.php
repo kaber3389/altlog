@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Exceptions\ResourceConflictException;
 use App\Http\Requests\Hold\StoreHoldRequest;
 use App\Http\Resources\HoldResource;
-use App\Http\SlotService;
+use App\Http\Services\SlotService;
 
 class HoldController extends Controller
 {

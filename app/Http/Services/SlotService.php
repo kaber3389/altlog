@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http;
+namespace App\Http\Services;
 
 use App\Exceptions\ResourceConflictException;
 use App\Http\Enums\Hold\HoldStatus;
@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\DB;
 class SlotService
 {
     const CACHE_KEY = 'slots.availability';
-    const CACHE_TTL = 'slots.availability';
+    const CACHE_TTL = 10;
 
     public function availability()
     {
