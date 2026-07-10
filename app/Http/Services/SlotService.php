@@ -10,7 +10,7 @@ use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
-class SlotService
+class  SlotService
 {
     const CACHE_KEY = 'slots.availability';
     const CACHE_TTL = 10;
@@ -63,7 +63,7 @@ class SlotService
                 'expires_at' => now()->addMinutes(5),
             ]);
         } catch (UniqueConstraintViolationException) {
-            return Hold::where('slot_id')->where('idempotency_key', $idempotencyKey)->firstOrFail();
+            return Hold::where('slot_id', $slotId)->where('idempotency_key', $idempotencyKey)->firstOrFail();
         }
     }
 
