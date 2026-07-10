@@ -9,7 +9,7 @@ use App\Http\Services\SlotService;
 
 class HoldController extends Controller
 {
-    public function hold(int $slotId, StoreHoldRequest $request , SlotService $slotService)
+    public function hold(int $slotId, StoreHoldRequest $request, SlotService $slotService)
     {
         $hold = $slotService->hold($slotId, $request->validated('idempotency_key'));
 
@@ -20,19 +20,11 @@ class HoldController extends Controller
 
     public function confirm(int $holdId, SlotService $slotService)
     {
-        try {
-            return HoldResource::make($slotService->confirm($holdId));
-        } catch (ResourceConflictException $e) {
-            return response()->json(['message' => $e->getMessage()])->setStatusCode($e->getStatusCode());
-        }
+        return HoldResource::make($slotService->confirm($holdId));
     }
 
     public function cancel(int $holdId, SlotService $slotService)
     {
-        try {
-            return HoldResource::make($slotService->cancel($holdId));
-        } catch (ResourceConflictException $e) {
-            return response()->json(['message' => $e->getMessage()])->setStatusCode($e->getStatusCode());
-        }
+        return HoldResource::make($slotService->cancel($holdId));
     }
 }
